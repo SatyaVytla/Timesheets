@@ -28,6 +28,7 @@ defmodule TimesheetWeb.LogsheetController do
   def create(conn, %{"logsheet" => logsheet_params}) do
     IO.puts("con")
     IO.inspect(conn)
+    #References : https://github.com/hemanthnhs/CS5610-WebDev-HW6
     numbers = 1..8
     iterList = Enum.to_list(numbers)
     Enum.map(iterList, fn x ->
