@@ -24,7 +24,7 @@ defmodule TimesheetWeb.PageController do
       if(conn.assigns[:current_user].ismanager == true) do
         user = Users.get_user_by_name(params["user"])
         conn
-        |> redirect(to: Routes.logsheet_path(conn, :index, user: user.id, date: conn.params["date"]))
+        |> redirect(to: Routes.logsheet_path(conn, :index, user: user.id))
       else
         #worker
         conn

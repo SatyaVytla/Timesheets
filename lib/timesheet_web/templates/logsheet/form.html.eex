@@ -8,25 +8,26 @@
     <%= label f, :date_logged%>
     <%= date_select f, :date_logged, value: @date_logged%>
       <%= error_tag f, :date_logged %>
+      <br><br>
   <!-- referred https://elixir-lang.org/getting-started/comprehensions.html -->
   <%= for i <- 1..8 do %>
-  <div class="form-group">
+  <div class="form-group row">
 
-      <%= label f, :task_seqno %>
-      <%= "i#{i}" |> String.to_atom%>
+      <h5><%= label f, :Task_Seqno %>&nbsp;
+      <%= "#{i}     " |> String.to_atom%></h5>
 
 
-      <%= label f, :hours %>
-      <%= number_input f, ":hours#{i}" |> String.to_atom, min: 1, max: 8 %>
+      <h5 class="offset-1"><%= label f, :hours,class: "offset-1" %></h5>&nbsp;&nbsp;
+      <%= number_input f, ":hours#{i}" |> String.to_atom, min: 1, max: 8, class: "form-control col-2" %>
       <%= error_tag f, :hours %>
 
-      <%= label f, :jobcode %>
+      <h5 class="offset-1"><%= label f, :jobcode,class: "offset-2" %></h5>&nbsp;&nbsp;&nbsp;&nbsp;
   <!-- reffered https://stackoverflow.com/questions/36375558/how-to-concatenate-something-inside-a-render-function-in-a-template -->
-      <%= select f,":job#{i}" |> String.to_atom, @jobs %>
+      <%= select f,":job#{i}" |> String.to_atom, @jobs, class: "form-control col-2" %>
       <%= error_tag f, :jobcode %>
   </div>
 <% end %>
   <div>
-    <%= submit "Submit" %>
+    <%= submit "Submit", class: "btn btn-success" %>
   </div>
 <% end %>

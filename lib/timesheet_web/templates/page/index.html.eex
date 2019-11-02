@@ -6,17 +6,13 @@
            <div class="form-group">
             <%= if @current_user do %>
                     <%= if @current_user.ismanager == true do %>
-                    Manager
-                    Select the worker : <%= select f,:user , @users , class: "form-control"%>
-                    Select a date : <%= date_select f, :date, class: "form-control" %>
-                    <%= submit "View Details" %>
-                    <% else %>
-                      Enter date you wish to log for : <%= date_select f, :date_selected, class: "form-control" %>
-                      <%= submit "Log your hours" %>
-                    <% end %>
+                    <h3>Select the worker :</h3> <%= select f,:user , @users , class: "form-control"%>
 
-              (<%= link("Logout", to: Routes.session_path(@conn, :delete),
-                method: :delete) %>)
+                    <%= submit "View Details", class: "btn btn-success"  %>
+                    <% else %>
+                     <h3>Enter date you wish to log for : </h3> <%= date_select f, :date_selected, default: {2019, 11, 02},class: "form-control" %>
+                      <%= submit "Log your hours", class: "btn btn-success" %>
+                    <% end %>
             <% else %>
               <%= link("Login", to: Routes.session_path(@conn, :new)) %>
             <% end %>

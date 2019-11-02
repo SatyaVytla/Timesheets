@@ -9,7 +9,8 @@ defmodule Timesheet.Repo.Migrations.CreateLogsheets do
 
       add :job_code, references(:jobs, column: :job_code, type: :string)
       add :user_id, references(:users)
-      add :date_logged, references(:trackers, column: :date_logged, type: :date)
+      add :date_logged, :date
+      add :approve, :boolean, default: false
 
       timestamps()
     end

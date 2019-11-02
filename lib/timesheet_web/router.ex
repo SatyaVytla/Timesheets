@@ -20,6 +20,7 @@ defmodule TimesheetWeb.Router do
 
     get "/", PageController, :index
     post "/user_pages", PageController, :user_pages
+    get "/update_task", LogsheetController, :update_task
 
     resources "/users", UserController
     resources "/jobs", JobController

@@ -1,34 +1,16 @@
 <h1>Listing Logsheets</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Date logged</th>
-      <th>Task seqno</th>
-      <th>Hours</th>
-      <th>User</th>
-      <th>Jobcode</th>
+<strong>Date logged</strong>
+<strong>Approval Status</strong>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for logsheet <- @logsheets do %>
-    <tr>
-      <td><%= logsheet.date_logged %></td>
-      <td><%= logsheet.task_seqno %></td>
-      <td><%= logsheet.hours %></td>
-      <td><%= logsheet.user_id %></td>
-      <td><%= logsheet.jobcode %></td>
 
-      <td>
-        <span><%= link "Show", to: Routes.logsheet_path(@conn, :show, logsheet) %></span>
-        <span><%= link "Edit", to: Routes.logsheet_path(@conn, :edit, logsheet) %></span>
-        <span><%= link "Delete", to: Routes.logsheet_path(@conn, :delete, logsheet), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
+ <%= for {date,approve} <- @logsheets do %>
+ <div class="form-group">
+    <%= date %>
+    <%= approve %>
+    <%= link("View", to: Routes.logsheet_path(@conn, :show, "ff", user_id: @user_id, "date[day]": date.day, "date[month]": date.month, "date[year]": date.year)) %>
+
+
+</div>
+
 <% end %>
-  </tbody>
-</table>
-
-<span><%= link "New Logsheet", to: Routes.logsheet_path(@conn, :new) %></span>
