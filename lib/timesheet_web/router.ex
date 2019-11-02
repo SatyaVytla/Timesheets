@@ -7,6 +7,8 @@ defmodule TimesheetWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_session
+    plug TimesheetWeb.Plugs.FetchCurrentUser
   end
 
   pipeline :api do
@@ -17,12 +19,15 @@ defmodule TimesheetWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    post "/user_pages", PageController, :user_pages
 
     resources "/users", UserController
     resources "/jobs", JobController
     resources "/trackers", TrackerController
     resources "/logsheets", LogsheetController
 
+    resources "/sessions", SessionController,
+              only: [:new, :create, :delete], singleton: true
 
   end
 

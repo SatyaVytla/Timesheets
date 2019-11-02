@@ -4,30 +4,28 @@
 
   <li>
     <strong>Date logged:</strong>
-    <%= @logsheet.date_logged %>
+    <!--  @date%> -->
   </li>
 
   <li>
     <strong>Task seqno:</strong>
-    <%= @logsheet.task_seqno %>
+    <!--  @logsheet.task_seqno %> -->
   </li>
 
   <li>
     <strong>Hours:</strong>
-    <%= @logsheet.hours %>
+    <!--  @logsheet.hours %> -->
   </li>
 
   <li>
     <strong>User:</strong>
-    <%= @logsheet.user_id %>
+    <!-- @logsheet.user_id %> -->
   </li>
 
   <li>
     <strong>Jobcode:</strong>
-    <%= @logsheet.jobcode %>
+    <!--  @logsheet.jobcode %> -->
   </li>
 
 </ul>
 
-<span><%= link "Edit", to: Routes.logsheet_path(@conn, :edit, @logsheet) %></span>
-<span><%= link "Back", to: Routes.logsheet_path(@conn, :index) %></span>

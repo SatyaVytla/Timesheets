@@ -14,6 +14,7 @@ defmodule TimesheetWeb.JobController do
     render(conn, "new.html", changeset: changeset)
   end
 
+
   def create(conn, %{"job" => job_params}) do
     case Jobs.create_job(job_params) do
       {:ok, job} ->

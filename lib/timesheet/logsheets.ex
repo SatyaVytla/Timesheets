@@ -50,6 +50,7 @@ defmodule Timesheet.Logsheets do
 
   """
   def create_logsheet(attrs \\ %{}) do
+    IO.puts("--------------------------------------------")
     %Logsheet{}
     |> Logsheet.changeset(attrs)
     |> Repo.insert()

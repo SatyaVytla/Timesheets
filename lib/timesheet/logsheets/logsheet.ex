@@ -19,6 +19,7 @@ defmodule Timesheet.Logsheets.Logsheet do
   def changeset(logsheet, attrs) do
     logsheet
     |> cast(attrs, [:date_logged, :task_seqno, :hours, :user_id, :job_code])
-    |> validate_required([:date_logged, :task_seqno, :hours, :user_id, :job_code])
+    |> validate_inclusion(:hours, 0..8)
+    |> validate_required([:date_logged, :hours, :user_id, :job_code])
   end
 end
